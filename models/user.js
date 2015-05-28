@@ -8,10 +8,10 @@ var mongoose = require('mongoose'),
 
 
 var UserSchema = new Schema({
-    email: { type: String, required: true, index: { unique: true } },
-    zipcode: {type: Number },
     firstName: { type: String },
     lastName: { type: String },
+    zipcode: {type: Number },
+    email: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true }
 });
 

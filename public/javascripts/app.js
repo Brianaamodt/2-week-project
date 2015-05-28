@@ -6,15 +6,17 @@ var app = angular.module('myApp', []);
 app.controller('userKey', ["$scope", "$http", function($scope, $http){
 
     $scope.getData = function() {
-        return $http.get('/users/userLogin').then(function(response){
+        return $http.get('/users/userLogIn').then(function(response){
             if(response.status !== 200){
                 throw new Error('Failed to fetch from the API');
             }
-            $scope.showData= function(response){
+            console.log(response);
+            $scope.showData= function(data){
             for (var i = 0; i < data.length; i++) {
-            $scope.username = response[i].firstName;
-            }}
+            $scope.username = data[i].firstName;
+            }};
 
+            showData(response);
             //$scope.username(function(username){
             //    if (username.firstName == false){
             //        username["showName"] = false;

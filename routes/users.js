@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     if (req.isAuthenticated()) {
         res.sendFile(path.resolve(__dirname, '../views/users.html'));  //append username & logout option
     } else {
-        res.json("You must be a member to view user profiles"); //shake user/password box
+        res.json("You must log in to view your user profile"); //shake user/password box
     }
 });
 
@@ -27,7 +27,7 @@ router.get('/findUsers', function(req, res, next){
     }
 });
 
-router.get('/userLogin', function(req, res, next){
+router.get('/userLogIn', function(req, res, next){
         if (req.isAuthenticated()) {
             console.log("This Happens");
             Users.find({email: req.user.email}, "firstName lastName zipcode email", function (err, users) {

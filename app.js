@@ -63,6 +63,7 @@ passport.use(
 
 
 passport.serializeUser(function(user, done) {
+    console.log("1")
     done(null, user.id);
 });
 
