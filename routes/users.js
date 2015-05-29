@@ -13,35 +13,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/findUsers', function(req, res, next){
-        if (req.isAuthenticated()) {
-            Users.find(
-                {},
-                "firstName lastName zipcode email",
-                function (err, Users) {
-                    res.json(Users);
-                    console.log(1);
-                });
-
-        } else {
-            res.json("Access Denied");
-    }
-});
-
-router.get('/userLogIn', function(req, res, next){
-        if (req.isAuthenticated()) {
-            console.log("This Happens");
-            Users.find({email: req.user.email}, "firstName lastName zipcode email", function (err, users) {
-                res.json(users);
+    if (req.isAuthenticated()) {
+        Users.find(
+            {},
+            "firstName lastName zipcode email",
+            function (err, Users) {
+                res.json(Users);
             });
 
-        } else {
-            res.json("You must be a member to view user profiles");
-        }
-    });
-
-router.get('/logOut', function(req, res, next) {
-    req.logout();
-    res.redirect('../../');
+    } else {
+        res.json("Access Denied");
+    }
 });
 
 module.exports = router;
