@@ -4,20 +4,16 @@
 var app = angular.module('myApp', []);
 
 app.controller('userKey', ["$scope", "$http", function($scope, $http){
-    $scope.username= {};
-    var getData = function() {
-        return $http.get('/login/userLogIn').then(function (response) {
-            if (response.status !== 200) {
-                throw new Error('Failed to fetch from the API');
-            }
-            if (response) {
+
+    $http.get('/login/userLogIn').then(function (response) {
+            if (response.data == "false") {
+                console.log(response);
+                $scope.loggedIn = true;
+            } else {
                 console.log(response);
                 $scope.username = response.data;
             }
         });
-    };
-
-    getData();
 }]);
 
 //

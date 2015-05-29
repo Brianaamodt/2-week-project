@@ -14,11 +14,11 @@ router.get("/", function(req,res,next){
 router.get('/userLogIn', function(req, res, next){
     if (req.isAuthenticated()) {
         Users.findOne({email: req.user.email}, "firstName lastName zipcode email", function (err, user) {
-            res.json(user);
+            res.send(user);
         });
 
     } else {
-        res.json("You must be a member to view user profiles");
+        res.send("false");
     }
 });
 
