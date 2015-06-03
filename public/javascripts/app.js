@@ -36,6 +36,7 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
     };
 
     $scope.delete = function(article) {
+        console.log(article, article._id);
         return $http.delete('/' + article._id, article).then(getArticles());
     };
 
@@ -47,20 +48,10 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
         }
     });
 
-    var getComments = function() {
-        console.log("YES THIS WORKS");
-        return $http.get('/statement').then(function(response){
-            console.log("GET COMES BACK: ", response.data);
-            $scope.comments = response.data;
-            return $scope.comments
-
-        });
-    };
-
     $scope.make = function(comment, _id) {
         fullComment = username + ": " + comment;
         console.log("click", fullComment, _id);
-        $http.post('/comments', {comment: fullComment, id: _id}).then(getComments());
+        $http.post('/comments', {comment: fullComment, id: _id}).then(getArticles());
     };
 
     $http.get('/login/userLogIn').then(function (response) {
@@ -73,10 +64,9 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
         }
     });
 
-    //$scope.delete = function(comment) {
-    //    console.log(comment._id);
-    //    return $http.delete('/' + comment._id, comment).then(getComments());
+    //$scope.remove = function(article, comment) {
+    //    console.log(comment, comment._id);
+    //    return $http.delete('/' + article +'/comments/' + comment._id, comment).then(getArticles());
     //};
-    getComments();
     getArticles();
 }]);

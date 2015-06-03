@@ -26,14 +26,6 @@ router.post('/add', function(req, res, next){
     });
 });
 
-router.get('/statement', function(req, res, next) {
-    console.log("statement 1", req);
-    Article.find({}, "comments", function(err, data){
-        console.log("statement 2", data);
-        res.send(data);
-    });
-});
-
 router.post('/comments', function(req, res, next){
     var comment = new Comment({
         comment: req.body.comment

@@ -26,7 +26,12 @@
                     <input ng-click="make(comment, article._id)" class="btn-md btn-primary" type="submit" value="Publish">
                 </div>
                 <div class="well col-md-12" ng-repeat="comment in article.comments">
-                <div><p>{{comment.comment}}</p></div>
+                    <div class="units">
+                        <button ng-click="remove(article._id, comment)" class="delete"  ng-if="moddedIn">X</button>
+                    </div>
+                        <div>
+                            <p>{{comment.comment}}</p>
+                        </div>
                 </div>
             </div>
         </div>
