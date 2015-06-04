@@ -29,7 +29,7 @@ router.get('/logOut', function(req, res, next) {
 
 router.post('/',
     passport.authenticate('local', {
-        successRedirect: '/users',
+        successRedirect: '/users/:id',
         failureRedirect: '/login'
     })
 );

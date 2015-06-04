@@ -25,6 +25,7 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
 //=======ARTICLES=======//
     var getArticles = function() {
         return $http.get('/articles').then(function(response){
+            $scope.article = {};
             console.log(response);
             $scope.articles = response.data;
             return $scope.articles.data;
@@ -63,10 +64,34 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
             $scope.moddedIn = true;
         }
     });
-
-    //$scope.remove = function(article, comment) {
-    //    console.log(comment, comment._id);
-    //    return $http.delete('/' + article +'/comments/' + comment._id, comment).then(getArticles());
-    //};
+    $scope.showHide = function(showComment) {
+            if ($scope.showComment == true) {
+                $scope.showComment = false;
+            } else {
+                $scope.showComment = true;
+            }
+    };
     getArticles();
+}]);
+
+app.controller('userContent', ["$scope", "$http", function($scope, $http){
+    var getUser = function() {
+        return $http.get('/findUsers').then(function(response){
+            console.log(response);
+            $scope.users = response.data;
+            return $scope.user.data;
+        });
+    };
+
+    $scope.generate = function(game) {
+        console.log(game);
+        return $http.post('/games', game).then(getUser());
+    };
+
+    $scope.delete = function(game) {
+        console.log(game, game._id);
+        return $http.delete('/' + game._id, game).then(getUser());
+    };
+
+    getUser();
 }]);

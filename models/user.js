@@ -4,6 +4,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt'),
+    GameSchema = require('./game').model('Game').schema,
     SALT_WORK_FACTOR = 10;
 
 
@@ -12,7 +13,9 @@ var UserSchema = new Schema({
     lastName: { type: String },
     zipcode: {type: Number },
     email: { type: String, required: true, index: { unique: true } },
-    password: { type: String, required: true }
+    password: { type: String, required: true },
+    games: [GameSchema]
+
 });
 
 UserSchema.pre('save', function(next) {

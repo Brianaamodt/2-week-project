@@ -3,40 +3,46 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
-    <div ng-include="'/views/template.html'"></div>
-    <div class="container" ng-controller="articleContent">
-        <div class="col-md-12 col-sm-12 col-xs-12" ng-if="moddedIn">
+    <div class="template" ng-include="'/views/template.html'"></div>
+    <div class="container page ng-cloak" ng-controller="articleContent">
+        <div class="" ng-if="moddedIn">
             <input ng-model="article.title" type="text" ng-init="N/A" placeholder="Title">
             <input ng-model="article.date" type="text" placeholder="MM/DD/YYYY">
+            <input ng-model="article.image" type="text" ng-init="N/A" placeholder="Title">
             <input ng-model="article.content" type="text" ng-init="N/A" placeholder="Content">
-            <button ng-click="create(article)" class="btn-md btn-primary">Publish</button>
+            <button ng-click="create(article)" class="">Publish</button>
         </div>
-        <div class="well col-md-12" ng-repeat="article in articles">
-            <div class="col-md-9">
+        <div class="" ng-repeat="article in articles">
+            <div class="">
                 <div class="units">
                     <button ng-click="delete(article)" class="delete"  ng-if="moddedIn">X</button>
                 </div>
-                <div><h3>{{article.title}}</h3></div>
-                <div><p>{{article.date}}</p></div>
+                <div class="titleDate"><h3>{{article.title}}</h3>
+                    <p>{{article.date}}</p></div>
+                <div><img width="450" ng-src="{{article.image}}"/></div>
                 <div><p>{{article.content}}</p></div>
-                <div class="col-md-12 col-sm-12 col-xs-12" ng-if="!loggedIn">
-                    <input ng-model="comment" type="text" placeholder="Enter comment">
-                    <input ng-click="make(comment, article._id)" class="btn-md btn-primary" type="submit" value="Publish">
-                </div>
-                <div class="well col-md-12" ng-repeat="comment in article.comments">
-                    <div class="units">
-                        <button ng-click="remove(article._id, comment)" class="delete"  ng-if="moddedIn">X</button>
+                <div class="" ng-if="!loggedIn">
+                    <button ng-click="showHide()" class="hide" ng-hide="showComment">Show Comments</button>
+                    <button ng-click="showHide()" class="hide" ng-show="showComment">Hide Comments</button>
+                    <div>
+                        <input ng-model="comment" type="text" placeholder="Enter comment" ng-show="showComment">
+                        <input ng-click="make(comment, article._id)" class="" type="submit" value="Publish" ng-show="showComment">
                     </div>
-                        <div>
-                            <p>{{comment.comment}}</p>
+                </div>
+                <div>
+                    <div class="commentArea" ng-show="showComment" ng-repeat="comment in article.comments">
+                        <div class="opinion">
+                                <p>{{comment.comment}}</p>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/javascripts/angular/angular.min.js"></script>
+    <script type="text/javascript" src="/javascripts/vendors/angular/angular.min.js"></script>
     <script type="text/javascript" src="/javascripts/app.js"></script>
 </body>
 </html>

@@ -2,15 +2,52 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
-li{
-  list-style: none;
-}
-
-li:nth-child(even){
-  color: #ffffff;
+.header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  width: 100%;
   background-color: #000000;
 }
-a {
-  color: #00B7FF;
+.logStatus{
+  margin-right: 3%;
+  text-align: right;
+  color: #FFFFFF;
+  margin-top: 17px;
+  font-weight: bold;
+  background-color: #000000;
+}
+
+a{
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+a:hover{color: #FFFFFF;
+  text-decoration: none;
+}
+
+.navigation{
+  text-align: left;
+}
+
+.navbtn{
+  text-align: center;
+  margin-left: 3%;
+  background-color: #000000;
+  padding: 17px;
+  border-radius: 50px;
+}
+
+.navbtn:hover {
+  background-color: #4e4e4e;
+}
+
+.page{
+  margin-top: 50px;
+}
+.ng-cloak{
+  display: none !important;
 }

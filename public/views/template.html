@@ -1,16 +1,20 @@
-<div class="container" ng-controller="userKey">
+<link rel="stylesheet" href="/stylesheets/style.css"/>
+<div class="container header" ng-controller="userKey">
+    <div class="navBar">
         <div class="logStatus">
             <div ng-if="loggedIn">
                 <a href="/login">login</a> |
                 <a href="/register">register</a>
             </div>
             <div ng-if="!loggedIn">
-                <a href="/users" >{{username}}</a> |
+                <a href="/users/:id" >{{username}}</a> |
                 <a href="/login/logout">logout</a>
             </div>
         </div>
-        <a href="/profiles">Interviews</a>
-        <a href="/">Home</a>
-        <a href="/resource">Resources</a>
+        <div class="navigation">
+            <a class="navbtn" href="/">Home</a>
+            <a class="navbtn" href="/profiles">Interviews</a>
+            <a class="navbtn" href="/resource">Resources</a>
+        </div>
+    </div>
 </div>
-

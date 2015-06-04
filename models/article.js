@@ -6,9 +6,10 @@ var mongoose = require('mongoose'),
     CommentSchema = require('./comment').model('Comment').schema;
 
 var ArticleSchema = new Schema({
-    title: String,
-    date: String,
-    content: String,
+    title: {type:String, required: true},
+    image: {type:String, required: false},
+    date: {type:String, required: true},
+    content: {type:String, required: true},
     comments: [CommentSchema]
 });
 

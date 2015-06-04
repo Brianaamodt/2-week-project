@@ -17,7 +17,7 @@ router.post('/', function(req,res,next) {
         if (err)
             next(err);
         else
-            res.redirect('/users');
+            res.redirect('/users/:id');
     })
 });
 
