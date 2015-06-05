@@ -73,25 +73,3 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
     };
     getArticles();
 }]);
-
-app.controller('userContent', ["$scope", "$http", function($scope, $http){
-    var getUser = function() {
-        return $http.get('/findUsers').then(function(response){
-            console.log(response);
-            $scope.users = response.data;
-            return $scope.user.data;
-        });
-    };
-
-    $scope.generate = function(game) {
-        console.log(game);
-        return $http.post('/games', game).then(getUser());
-    };
-
-    $scope.delete = function(game) {
-        console.log(game, game._id);
-        return $http.delete('/' + game._id, game).then(getUser());
-    };
-
-    getUser();
-}]);

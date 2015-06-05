@@ -7,29 +7,31 @@
 <body>
     <div ng-include="'/views/template.html'"></div>
     <div class="container page ng-cloak" ng-controller="articleContent">
-        <form action="/register" method="post">
-            <div>
-                <label for="firstName">First Name:</label>
-                <input type="text" name="firstName" id="firstName"/>
-            </div>
-            <div>
-                <label for="lastName">Last Name:</label>
-                <input type="text" name="lastName" id="lastName"/>
-            </div>
-            <div>
-                <label for="zipcode">Zip Code:</label>
-                <input type="number" name="zipcode" id="zipcode"/>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="text" name="email" id="email"/>
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password"/>
-            </div>
-            <div>
-                <input type="submit" value="Register"/>
+        <form class='userEnter' action="/register" method="post">
+            <div><h4>REGISTER</h4>
+                <div class="loginField">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" name="firstName" id="firstName"/>
+                </div>
+                <div class="loginField">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" name="lastName" id="lastName"/>
+                </div>
+                <div class="loginField">
+                    <label for="zipcode">Zip Code:</label>
+                    <input type="number" name="zipcode" id="zipcode"/>
+                </div>
+                <div class="loginField">
+                    <label for="email">Email:</label>
+                    <input type="text" name="email" id="email"/>
+                </div>
+                <div class="loginField">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password"/>
+                </div>
+                <div class="loginField">
+                    <input type="submit" value="Register"/>
+                </div>
             </div>
 
             <script type="text/javascript" src="/javascripts/vendors/angular/angular.min.js"></script>

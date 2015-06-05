@@ -8,34 +8,37 @@
 <body>
     <div class="template" ng-include="'/views/template.html'"></div>
     <div class="container page ng-cloak" ng-controller="articleContent">
-        <div class="" ng-if="moddedIn">
-            <input ng-model="article.title" type="text" ng-init="N/A" placeholder="Title">
-            <input ng-model="article.date" type="text" placeholder="MM/DD/YYYY">
-            <input ng-model="article.image" type="text" ng-init="N/A" placeholder="Title">
-            <input ng-model="article.content" type="text" ng-init="N/A" placeholder="Content">
+        <div class="articleEditor" ng-if="moddedIn">
+            <input ng-model="article.title" type="text" placeholder="Title"><br>
+            <input ng-model="article.date" type="text" placeholder="MM/DD/YYYY"><br>
+            <input ng-model="article.image" type="text" placeholder="Image URL"><br>
+            <input class="mainContent" ng-model="article.content" type="text" placeholder="Content"><br>
             <button ng-click="create(article)" class="">Publish</button>
         </div>
-        <div class="" ng-repeat="article in articles">
-            <div class="">
+        <div class="articlesDisplay" ng-repeat="article in articles">
+            <div class="individualArticle">
                 <div class="units">
                     <button ng-click="delete(article)" class="delete"  ng-if="moddedIn">X</button>
                 </div>
-                <div class="titleDate"><h3>{{article.title}}</h3>
-                    <p>{{article.date}}</p></div>
-                <div><img width="450" ng-src="{{article.image}}"/></div>
-                <div><p>{{article.content}}</p></div>
-                <div class="" ng-if="!loggedIn">
-                    <button ng-click="showHide()" class="hide" ng-hide="showComment">Show Comments</button>
-                    <button ng-click="showHide()" class="hide" ng-show="showComment">Hide Comments</button>
-                    <div>
-                        <input ng-model="comment" type="text" placeholder="Enter comment" ng-show="showComment">
-                        <input ng-click="make(comment, article._id)" class="" type="submit" value="Publish" ng-show="showComment">
+                <a ng-click="showArticle = showArticle ? false : true" ng-hide="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+                <a ng-click="showArticle = showArticle ? false : true" ng-show="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+                <div ng-show="showArticle">
+                    <div class="articleContent"><p>{{article.date}}</p></div>
+                    <div><img class="articleImage" ng-src="{{article.image}}"/></div>
+                    <div class="articleContent"><p>{{article.content}}</p></div>
+                    <div class="commentSection" ng-if="!loggedIn">
+                        <a ng-click="showHide()" class="hide" ng-hide="showComment">Show Comments</a>
+                        <a ng-click="showHide()" class="hide" ng-show="showComment">Hide Comments</a>
+                        <div class="commenting">
+                            <input class="commentField" ng-model="comment" type="text" placeholder="Enter comment" ng-show="showComment">
+                            <a ng-click="make(comment, article._id); $event.preventDefault(); $event.stopPropagation()" class="submit" type="submit" ng-show="showComment">Publish</a>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <div class="commentArea" ng-show="showComment" ng-repeat="comment in article.comments">
-                        <div class="opinion">
-                                <p>{{comment.comment}}</p>
+                    <div>
+                        <div class="commentArea" ng-show="showComment" ng-repeat="comment in article.comments">
+                            <div class="opinion">
+                                    <p class="words">{{comment.comment}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,3 +49,15 @@
     <script type="text/javascript" src="/javascripts/app.js"></script>
 </body>
 </html>
+
+<a ng-click="showArticle = article._id" ng-hide="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+<a ng-click="showArticle = showArticle ? false : true" ng-show="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+
+
+<a ng-click="showArticle = showArticle ? false : true" ng-hide="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+<a ng-click="showArticle = showArticle ? false : true" ng-show="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+
+
+<a ng-click="showArticle = showArticle ? false : true" ng-hide="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+<a ng-click="showArticle = showArticle ? false : true" ng-show="showArticle" class="titleDate"><h3>{{article.title}}</h3></a>
+

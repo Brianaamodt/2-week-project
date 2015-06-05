@@ -1,4 +1,4 @@
-var express = require('express');
+var express =require('express');
 var router = express.Router();
 var path = require('path');
 var Users = require('../models/user');
@@ -29,28 +29,38 @@ router.get('/findUsers', function(req, res, next){
 });
 
 router.post('/games', function(req, res, next){
-    console.log("1", req);
-    var game = new Game({
-        gameName: req.body.gameName,
-        gameDescription: req.body.gameDescription
+    console.log(req);
+    Game.create(req.body, function(err, data){
+        if (err) {
+            console.log(err);
+            next(err);
+        }
+        res.json(data);
     });
-    Users.findById(req.body.id,
-        function(err, user){
-            if (err){
-                console.log("Find article failed", err);
-                next(err)
-            }
-            try {
-                user.comments.push(game);
-                user.save(function (err) {
-                    if (err) return next(err);
-                });
-                res.send(game);
-            }catch(exception){
-                console.log("Push failed:", exception);
-                next(err);
-            }
-        });
 });
+
+//    console.log("1", req);
+//    var game = new Game({
+//        gameName: req.body.gameName,
+//        gameDescription: req.body.gameDescription
+//    });
+//    Users.findById(req.body.id,
+//        function(err, user){
+//            if (err){
+//                console.log("Find article failed", err);
+//                next(err)
+//            }
+//            try {
+//                user.comments.push(game);
+//                user.save(function (err) {
+//                    if (err) return next(err);
+//                });
+//                res.send(game);
+//            }catch(exception){
+//                console.log("Push failed:", exception);
+//                next(err);
+//            }
+//        });
+//});
 
 module.exports = router;

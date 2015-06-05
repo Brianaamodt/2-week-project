@@ -3,8 +3,8 @@
  */
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    bcrypt = require('bcrypt'),
     GameSchema = require('./game').model('Game').schema,
+    bcrypt = require('bcrypt'),
     SALT_WORK_FACTOR = 10;
 
 

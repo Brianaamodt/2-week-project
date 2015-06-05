@@ -2,26 +2,29 @@
 <html ng-app="myApp">
 <head>
     <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css"/>
 </head>
 <body>
 <div ng-include="'/views/template.html'"></div>
 <form class='userEnter' action="/login" method="post">
-    <div>
-        <label for="email">Email:</label>
-        <input type="text" name="email" ng-model="email" id="email"/>
-    </div>
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password"/>
-    </div>
-    <div>
-        <input type="submit" value="Log In"/>
+    <div><h4>LOGIN</h4>
+        <div class="loginField">
+            <label for="email">Email:</label>
+            <input type="text" name="email" ng-model="email" id="email"/>
+        </div>
+        <div class="loginField">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password"/>
+        </div>
+        <div class="loginField">
+            <input type="submit" value="Log In"/>
+        </div>
     </div>
 </form>
 </div>
 
 
-<script type="text/javascript" src="/javascripts/angular/angular.min.js"></script>
+<script type="text/javascript" src="/javascripts/vendors/angular/angular.min.js"></script>
 <script type="text/javascript" src="/javascripts/app.js"></script>
 </body>
 </html>
