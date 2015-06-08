@@ -3,6 +3,7 @@
  */
 var app = angular.module('myApp', []);
 
+var openArticle;
 
 app.controller('userKey', ["$scope", "$http", function($scope, $http){
 
@@ -26,6 +27,7 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
     var getArticles = function() {
         return $http.get('/articles').then(function(response){
             $scope.article = {};
+            $scope.showArticle= false;
             console.log(response);
             $scope.articles = response.data;
             return $scope.articles.data;
@@ -33,7 +35,7 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
     };
 
     $scope.create = function(article) {
-        return $http.post('/add', article).then(getArticles());
+        return $http.post('/add', article).unshift(getArticles());
     };
 
     $scope.delete = function(article) {
@@ -64,6 +66,7 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
             $scope.moddedIn = true;
         }
     });
+
     $scope.showHide = function(showComment) {
             if ($scope.showComment == true) {
                 $scope.showComment = false;
@@ -71,5 +74,7 @@ app.controller('articleContent', ["$scope", "$http", function($scope, $http){
                 $scope.showComment = true;
             }
     };
-    getArticles();
+
+    getArticles()
+
 }]);

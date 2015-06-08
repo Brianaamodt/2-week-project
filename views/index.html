@@ -31,7 +31,7 @@
                         <a ng-click="showHide()" class="hide" ng-show="showComment">Hide Comments</a>
                         <div class="commenting">
                             <input class="commentField" ng-model="comment" type="text" placeholder="Enter comment" ng-show="showComment">
-                            <a ng-click="make(comment, article._id); $event.preventDefault(); $event.stopPropagation()" class="submit" type="submit" ng-show="showComment">Publish</a>
+                            <a ng-click="make(comment, article._id)" class="submit" type="submit" ng-show="showComment">Publish</a>
                         </div>
                     </div>
                     <div>
